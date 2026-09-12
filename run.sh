@@ -72,6 +72,7 @@ server {
         proxy_set_header Accept-Encoding "";
 
         sub_filter 'ws://' 'wss://';
+        sub_filter 'serverURI="wss://"+window.location.host+"/?ma=1"' 'serverURI="wss://"+window.location.host+"$http_x_ingress_path/?ma=1"';
         sub_filter '</body>' '<a href="#" onclick="document.cookie=&#39;ma3_console=; Max-Age=0; path=/&#39;;location.href=&#39;/&#39;;return false;" style="position:fixed;bottom:16px;right:16px;z-index:99999;background:#222;color:#fff;padding:10px 16px;border-radius:8px;font-family:sans-serif;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,.4);">🏠 Sélecteur</a></body>';
         sub_filter_once off;
         sub_filter_types text/html application/javascript text/javascript;
