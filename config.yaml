@@ -1,0 +1,35 @@
+name: "MA3 Web Remote"
+version: "2.1.2"
+slug: "grandma3_remote"
+description: "Web Remote grandMA3 pour Home Assistant, avec envoi de commandes OSC et remontée d'état des consoles"
+
+arch:
+  - amd64
+  - aarch64
+
+init: false
+startup: application
+boot: auto
+
+ingress: true
+ingress_port: 8099
+
+# Nécessaire pour publier l'état des consoles vers Home Assistant
+homeassistant_api: true
+hassio_api: true
+
+panel_icon: mdi:lightbulb-on
+panel_title: MA3 Web Remote
+
+options:
+  consoles:
+    []
+
+schema:
+  consoles:
+    - name: str
+      ip: str
+      port: int
+      osc_port: int?
+      osc_prefix: str?
+      icon: str?
